@@ -1,12 +1,14 @@
 class ArticlesController < ApplicationController
 
-	before_action :find_article, only: [:show, :edit, :update, :destroy]
+	before_action :find_article, only: [ :show, :edit, :update, :destroy ]
 
 	def index
 		@articles = Article.all
 	end
 
 	def show
+		@comment = Comment.new
+		@comment.article_id = @article.id
 	end
 
 	def new
