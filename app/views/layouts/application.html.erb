@@ -10,6 +10,20 @@
 
   <body>
   	<%= render 'shared/flash' %>
-    <%= yield %>
+    <div id="container">
+      <div id="content">
+        <%= yield %>
+        <hr>
+        <h6>
+          <% if logged_in? %>
+            <%= "Logged in as #{current_user.username}" %>
+            <%= link_to "logout", logout_path %>
+          <% else %>
+            Logged out
+            <%= link_to "login", login_path %>
+          <% end %>
+        </h6>
+      </div>
+    </div>
   </body>
 </html>

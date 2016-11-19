@@ -17,8 +17,11 @@
 <%= render partial: 'articles/comment', collection: @article.comments %>
 
 <%= link_to "Back to articles list", articles_path %>
-<%= link_to "Edit this article", edit_article_path(@article) %>
-<%= link_to "Delete this article", article_path(@article),
-		method: :delete, data: {confirm: "Really delete the article?"} %>
 
+<% if logged_in? %>
+	<%= link_to "Edit this article", edit_article_path(@article) %>
+	<%= link_to "Delete this article", article_path(@article),
+			method: :delete, data: {confirm: "Really delete the article?"} %>
+<% end %>
+	
 <%= render partial: 'comments/form' %>
