@@ -10,6 +10,10 @@ class ArticlesController < ApplicationController
 	def show
 		@comment = Comment.new
 		@comment.article_id = @article.id
+
+		@article.increment_view_count
+		@count = @article.view_count
+		@article.update(params.permit(:view_count))
 	end
 
 	def new
